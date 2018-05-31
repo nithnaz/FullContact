@@ -46,7 +46,7 @@ public class HolidayServiceImpl implements HolidayService{
     final List<StaysResponse> staysResponses = holidayMapper.toStaysResponses(staysList);
     final HolidayResponse holidayResponse = new HolidayResponse();
     Double totalDistance = new Double(0);
-    if (!staysResponses.isEmpty()) {
+    if (!CollectionUtils.isEmpty(staysResponses)) {
       List<StaysResponse> staysResponseList = new ArrayList<>();
       for (int i = 0; i <= staysResponses.size() - 1; i++) {
 
@@ -73,7 +73,9 @@ public class HolidayServiceImpl implements HolidayService{
           holidayResponse.setTotalDistance(totalDistance);
         }
       }
-      holidayResponse.setStays(staysResponseList);
+      if (!CollectionUtils.isEmpty(staysResponseList)) {
+        holidayResponse.setStays(staysResponseList);
+      }
       holidayResponses.add(holidayResponse);
       return holidayResponses;
     }
