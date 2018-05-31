@@ -73,9 +73,6 @@ public class HolidayServiceImpl implements HolidayService{
           holidayResponse.setTotalDistance(totalDistance);
         }
       }
-      if (staysResponses.size() == 1) {
-        holidayResponse.setTotalDistance(0D);
-      }
       holidayResponse.setStays(staysResponseList);
       holidayResponses.add(holidayResponse);
       return holidayResponses;
